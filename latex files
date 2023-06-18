@@ -1,0 +1,367 @@
+\documentclass{ltugboat}
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage[hidelinks,pdfa]{hyperref}
+\usepackage{enumitem}
+\usepackage{cancel}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,fit}
+\usepackage{tabularx}
+\usepackage{xcolor, soul}
+\sethlcolor{yellow}
+
+\title{Tamira Marie A. Laki\\ BS Mathematics CS}
+\begin{document}
+\maketitle
+\section*{Relations: Domain and Range, Identity, and Inverse Relations}
+\section{Introduction: Relations}
+    \begin{itemize}
+        \item If two ordered pair of elements are written, separated by comma and
+enclosed by parentheses like (a, b), they form a binary relation. In a
+binary relation (a, b), a-coordinate is called the left component or the
+domain and the b-coordinate is called the right component or the
+range.
+
+\item Relations can be used to store information in the computer
+databases. Relationships between people, numbers, events, letters,
+sets, and many other entities can be formalized in the idea of a
+binary relation. It is a binary relation because it relates two objects.
+    \end{itemize}
+
+\subsection*{Definition 3.1}
+A binary relation or simply a relation from a set A to a set B is a subset R of the cartesian product $ A \times B $. If $ (a, b) \in R $, we write $aRb$ and say that a is related to b. On the other hand, $a\cancel{R}b$ or $(a,b)\, \cancel{\in} \, R$ means a is not related to b. 
+
+\subsection*{Definition 3.2}
+    The Domain of R (denoted by $D_R$) is the set of all left components of the elements of R.
+
+\begin{center}
+    $D_R = \{a \in A \, | \, (a,\, b) \in R$ for some $b \in B \} = \{a \, | \, aRb\}$
+\end{center}
+
+\subsection*{Definition 3.3}
+The Range of R (denoted by $R_R$) is the set of all right components of the elements of R.
+
+\begin{center}
+    $R_R = \{ b \in B \, | \, (a, \, b) \in R$ for some $a \in A\} = \{ b \, | \, aRb\}$
+\end{center}
+
+\subsection*{Example}
+\begin{center}
+Suppose $ A = \{ 1,2,3 \}, \, B = \{a,b,c\}, \, R = \{(1,a),(3,b),(2,b)\}$ and R is a relation from A to B since R is a subset o f $ A \times B $ with respect to relation $ R, \, 1Ra, \, 3Rb $ but  \cancel{$1Rb$}, \cancel{$1Rc$}, \cancel{$2Ra$}, \cancel{$2Rc$}, \cancel{$3Ra$}, \cancel{$3Rc$}
+\end{center}
+
+\subsection*{Methods of Describing Relations}
+\subsection*{1. Relations through Ordered Pairs}
+    \begin{center}
+        $R = \{(1,x),(2,y),(3,z),(4,w)\}$
+    \end{center}
+\subsection*{2. Relations through Rule Form}
+    \begin{center}
+        $R = \{(a, \, b) \, | \, b=a^2\}$\\
+        $R = \{(a, \, b) \, | \, b<a+2\}$
+    \end{center}
+\subsection*{3. Relation through Arrow Diagrams}
+    \begin{center}
+    \begin{tikzpicture}
+    \foreach[count=\i] \lseti/\lsetmi in {A/{1,2,3},B/{$a$,$b$,$c$}} {
+        \begin{scope}[local bounding box=\lseti, x=2cm, y=0.5cm]
+        \foreach[count=\j] \lj in \lsetmi {
+            \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
+        }
+        \end{scope}
+        \node[ellipse, draw, fit=(\lseti), 
+        label={[name=l-\lseti]above:$\lseti$}] {};
+    }
+    \draw[->] (n-1-A) -- (n-2-B);
+    \draw[->] (n-2-A) -- (n-1-B);
+    \draw[->] (n-3-A) -- (n-3-B);
+    \draw[->] (l-A) -- node[above]{$R$}(l-A.center-|l-B.west);
+    \end{tikzpicture}
+    \end{center}
+\subsection*{4. Relations through Table}
+    \begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+$x$ & 1 & 2 & 3  \\
+\hline
+$y=f(x)$ & 1 & 4 & 9  \\
+\hline
+\end{tabular}
+\end{center}
+\subsection*{5. Relation through Rectangular Array Matrix}
+\begin{center}
+    \begin{tabular}{l|llll}
+  & $x$ & $y$ & \multicolumn{1}{c}{$z$} &  \\ \cline{1-4}
+1 & 0 & 1 & 1                     &  \\
+2 & 0 & 0 & 0                     &  \\
+3 & 0 & 1 & 0                     & 
+\end{tabular}
+\\[2 mm]$R = \{(1,y),(1,z),(3,y)\}$
+\end{center}
+\begin{description}
+\item \textbf{Note:}\\ The rows of the matrix are considered as the elements of A and the columns are considered as the elements of B. Put ``1" if $a \in R$ and ``0" if $a \cancel{\in} R$
+\end{description}
+
+\subsubsection*{Example 1}
+Suppose the relation R is described by the diagram at the right, express $R$ using:\\
+\begin{enumerate}
+    \item A list of ordered pairs
+    \item Rule form
+    \begin{center}
+    \begin{tikzpicture}
+    \foreach[count=\i] \lseti/\lsetmi in {A/{-1,1,-2,2},B/{1,4}} {
+        \begin{scope}[local bounding box=\lseti, x=2cm, y=0.5cm]
+        \foreach[count=\j] \lj in \lsetmi {
+            \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
+        }
+        \end{scope}
+        \node[ellipse, draw, fit=(\lseti), 
+        label={[name=l-\lseti]above:$\lseti$}] {};
+    }
+    \draw[->] (n-1-A) -- (n-1-B);
+    \draw[->] (n-2-A) -- (n-1-B);
+    \draw[->] (n-3-A) -- (n-2-B);
+    \draw[->] (n-4-A) -- (n-2-B);
+    \end{tikzpicture}
+    \end{center}
+\end{enumerate}
+\newline
+\textbf{Solution:}
+\begin{enumerate}
+    \item $R = \{(-1,1),(1,1),(2,4),(-2,4)\}$
+    \item In the figure, you have noticed that $(-1)^2 = 1, 1^2 = 1, (-2)^2 =4,$ and $2^2 = 4.$\\[2 mm]
+    This means that number in the first set is paired with its square in the second set. Hence, $b = a^2$ and therefore we can describe the relation $R$ as \textbf{$R=\{(a,b) \, | \, b=a^2, \, a=-1, \, 1, \, -2, \, 2$\}}
+\end{enumerate}
+
+\subsubsection*{Example 2}
+Suppose $R=\{(1,y),(1,z),(3,y)\}$ is a relation from $A = \{1,2,3\}$ to $B = \{x,y,z\}$. Write down the elements of A and elements of B in two disjoint disks, and then draw from $a \in A$ to $b \in B$ whenever $a$ is related to $b$.
+
+\newline 
+\textbf{Solution:}
+    \begin{center}
+    \begin{tikzpicture}
+    \foreach[count=\i] \lseti/\lsetmi in {A/{1,2,3},B/{$x$, $y$, $z$}} {
+        \begin{scope}[local bounding box=\lseti, x=2cm, y=0.5cm]
+        \foreach[count=\j] \lj in \lsetmi {
+            \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
+        }
+        \end{scope}
+        \node[ellipse, draw, fit=(\lseti), 
+        label={[name=l-\lseti]above:$\lseti$}] {};
+    }
+    \draw[->] (n-1-A) -- (n-2-B);
+    \draw[->] (n-1-A) -- (n-3-B);
+    \draw[->] (n-3-A) -- (n-2-B);;
+    \end{tikzpicture}
+    \end{center}
+
+\subsection*{Definition 3.4}
+Let $R$ be a relation from a set $A$ to itself. A relation on the set $A$ is a subset of $A \times A$.
+\subsubsection*{Example 3}
+Let $A = \{1,2,3,4\}, \, R = \{(a,b)\, | \, a$ divides $ b\}$. Which ordered pairs are in the relation R?
+\begin{description}
+    \item \textbf{Note:}\\
+    ``a divides b" means b can be divided by a. However, the other way around is not applicable.
+\end{description}
+
+\newline
+\textbf{Solution:}\\
+Since $(a,b)$ is in the relation $R$ if and only if a and b are positive integeres exceeding 4 such that a divides b. The following are the elements of $A \times A$:
+\newline
+   \indent $ A \times A = $\\
+   \indent \{(1,1),(1,2),(1,3),(1,4),\\
+   \indent (2,1),(2,2),(2,3),(2,4),\\
+   \indent (3,1),(3,2),(3,3),(3,4),\\
+   \indent (4,1),(4,2),(4,3),(4,4)\}
+
+\newline
+R = \{(1,1),(1,2),(1,3),(1,4),(2,2),(2,4),(3,3),(4,4)\}
+
+\subsubsection*{Example 4}
+Suppose $A = {1,2,3,4}$ and the following relations from $A \times A$
+\newline
+\indent $R_1 = \{(a,b) \, : \, a\geq b \}$\\
+\indent $R_2 = \{(a,b) \, : \, a < b \} $\\
+\indent $R_3 = \{(a,b) \, : \, a < b \} $\\
+\indent $R_4 = \{(a,b) \, : \, a + 1 = b \} $\\
+\indent $R_5 = \{(a,b) \, : \, a + b \geq 7 \} $\\
+Which of the following contain each of the pairs $(1,1), \, (2,2) \, (3,3) \, and \, (4,4)?$
+
+\newline
+\textbf{Solution:}\\The relation on a set A is simply a subset of $A \times A.$ i.e.\\
+\newline
+    \indent $ A \times A = $\\
+   \indent \{(1,1),(1,2),(1,3),(1,4),\\
+   \indent (2,1),(2,2),(2,3),(2,4),\\
+   \indent (3,1),(3,2),(3,3),(3,4),\\
+   \indent (4,1),(4,2),(4,3),(4,4)\}
+
+\section{Identity and Inverse Relation}
+\subsection*{Definition 3.5}
+Let A be a set. The \textbf{identity relation} is denoted by $I_A$, and is given by the symbols: $I_A = \{ (a,a) \, | \, a \in A \} $
+\begin{description}
+    \item \textbf{Note:}\\
+    Identity relation is also called \emph{equality} or \emph{diagonal relation on A}. It is denoted by `=" sometimes $``\triangle_A"$ or simply $``\triangle".$
+\end{description}
+
+\subsection*{Definition 3.6}
+Let R be a relation from A to B. The \emph{inverse of R,} denoted by $R_{-1}$, is the relation from B to A given by $bR_{-1}a$ if and only if $aRb$. In symbols, $R^{-1} = \{(b,a) \, | \, (a,b) \in R\}$
+\begin{description}
+    \item \textbf{Remark:}\\
+    If R is any relation, then $(R^{-1})^{-1} = R.$ The domain of $R^{-1}$ is the range of R and vice versa. If R is a relation to A, i.e. R is a subset of $A \times A$, $R^{-1}$ is also a relation on A.
+\end{description}
+
+\section{Composition of Relations}
+\textbf{Definition:} Let R be a relation from A to B and S be a relation from B to C. The composition of R and S, denoted by RoS, is the relation from A to C defined by: $ RoS = \{ (a,b) \, | \, (a,b) \in R \, and \, (b,c) \in S \, for \, some \, a \in  A, b \in B, c \in C \}$
+
+\subsubsection*{Example 1}
+Suppose $A = \{1,2,3\}; B = \{2,4,6,8\}; C = \{m,a,t\};$\\
+and Let $R = \{(1,2), (1,6), (3,4), (3,8)\}$ be a relation from set A to set B.\\
+and $S = \{(2,m), (4,t), (6,t), (8, m)\}$ be a relation from set B to set C.
+
+\newline
+\textbf{Solution:}\\
+Using the diagram the composition of \\
+$RoS = \{(1,m),(1,t),(3,t),(3,m)\}$.
+\begin{center}
+    \begin{tikzpicture}
+    \foreach[count=\i] \lseti/\lsetmi in {A/{1,2,3},B/{2,4,6,8},C/{$m$,$a$,$t$}} {
+        \begin{scope}[local bounding box=\lseti, x=2cm, y=0.5cm]
+        \foreach[count=\j] \lj in \lsetmi {
+            \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
+        }
+        \end{scope}
+        \node[ellipse, draw, fit=(\lseti), 
+        label={[name=l-\lseti]above:$\lseti$}] {};
+    }
+    \draw[->] (n-1-A) -- (n-1-B);
+    \draw[->] (n-1-A) -- (n-3-B);
+    \draw[->] (n-3-A) -- (n-2-B);
+    \draw[->] (n-3-A) -- (n-4-B);
+    \draw[->] (n-1-B) -- (n-1-C);
+    \draw[->] (n-2-B) -- (n-3-C);'
+    \draw[->] (n-3-B) -- (n-3-C);
+    \draw[->] (l-A) -- node[above]{$R$}(l-A.center-|l-B.west);
+    \draw[->] (l-B) -- node[above]{$S$}(l-B.center-|l-C.west);
+    \end{tikzpicture}
+    \end{center}
+
+\newline
+Suppose R is a relation from a set A to itself. The RoR, the composition of R to itself, is always defined, and RoR is sometimes denoted by $R^2$. Similarly, $R^3 = RoR = RoRoR$, and so on. ThusR is defined for all positive numbers.
+
+\subsubsection*{Example 2}
+Suppose $A = \{1,2,3\}$, and let \\ $R = \{(1,2),(1,3),(2,2),(3,3)\}$ be a relation from set A to set A. Then, the composition of the relation $R^3$ is the set $\{(1,2),(1,3),(2,2),(3,3)\}$.
+\begin{center}
+  \includegraphics[width=.4\textwidth]{R3.PNG}
+\end{center}
+
+\subsection*{Digraph of Relations}
+If a is a finite set and R is a relation on A, we can represent R pictorially as follows. Draw a small circle for each element of A and label the circle with corresponding element of A. These circle are called vertices, Draw a directed line, called an edge, from $a_i$ to $a_j$ and only if $a_iRa_j$. The resulting pictorial representation of R is called a directed graph or digraph of R. Thus, if R is a relation on A, the edges in the digraph of R correspond exactly to the pairs ($a_i$,$a_j$) in R, and the vertices correspond exactly to the elements of set A.
+
+\begin{description}
+    \item\textbf{Note:}\\
+    Arrangement of the vertex or vertices is arbitrary, you can also make your own composition, unless otherwise provided in the given problem. 
+    \end{description}
+
+\subsubsection*{Example 1}
+Let $A = \{1,2,3,4\};$\\
+$R = \{(1,2).(2,2),(2,4),(3,2),(3,4),(4,1),(4,3)\}$. \\ Then the digraph of R is shown below. Observe that there is an arrow from 2 to itself, it is because 2 is related to 2 under R.
+\begin{center}
+  \includegraphics[width=.46\textwidth]{ex1.PNG}
+\end{center}
+
+\subsubsection*{Example 2}
+\begin{center}
+  \includegraphics[width=.4\textwidth]{ex2.PNG}
+\end{center}
+\textbf{Solution:}\\
+$R = \{(1,2).(2,2),(1,3),(2,3),(3,3),(4,2),(4,3),\\(4,4)\}$
+
+\subsection*{Definition:}
+If R is a relation on a set A, and $a \in A$, the in-degree of a vertex is the number of edges terminating at the vertex and the out-degree is the number of edges leaving the vertex.
+\subsubsection*{Example 1}
+\begin{center}
+  \includegraphics[width=.4\textwidth]{ex3.PNG}
+\end{center}
+
+\subsubsection*{Example 2}
+Let $A = \{a,b,c,d\}$, and let R be the relation on A that has the matrix. Determine R, construct the digraph of R and list in-degrees and out-degrees of all vertices.
+\begin{center}
+  \includegraphics[width=.4\textwidth]{ex4.PNG}
+\end{center}
+\textbf{Solution:} \\
+The digraph of $R = \{(a,a),(b,b),(c,a),(c,b),(c,c),\\(d,b),(d,d)\}$ and the table of the in-degrees and out-degrees is shown below:
+\begin{center}
+  \includegraphics[width=.4\textwidth]{ex5.PNG}
+\end{center}
+
+\subsection*{Path of Length (n)}
+\subsubsection*{Definition 1}
+Suppose that R is a relation on a set A. A path of the length n in R from a to b is a finite sequence $\pi = a, x_1, x_2, ... , x_{n-1}, b$ beginning with a and ending with b, such that $aRx_1, aRx_2, ..., x_{n-1}Rb.$
+
+\subsubsection*{Definition 2}
+A path that begins and ends at the same vertex is called a \textbf{cycle}. A path of length \textit{n} involves \textbf{n+1} elements of A, although they are not necessarily distinct. Simply put, \textbf{the length of a path is the number of edges in the path,} where the vertices need not all be distinct. 
+
+\subsubsection*{Example 1}
+Consider the digraph below. The $\pi_1 = 1,2,3,4,5$ is a path length 4 from vertex 1 to vertex 3, $\pi_2 = 1,2,5,1$ is a path length of 3 from vertex 1 to itself, and $\pi_3 = 2,2$ is path length of 1 from vertex 2 to itself.
+\begin{center}
+  \includegraphics[width=.4\textwidth]{ex6.PNG}
+\end{center}
+
+\section{Properties of Relations}
+\subsection*{Definition 3.11}
+A relation R is reflexive if for every $a \in A (a,a) \in R.$ A relation is not reflexive if there exists $a \in A$ such that $(a,a) \cancel{\in} R.$
+\subsubsection*{Example}
+Consider the following relations on $\{1,2,3,4\}$.
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex7.PNG}
+\end{center}
+
+\subsection*{Definition 3.12}
+A relation R is symmetric if whenever $(a,b) \in R$, then $(b,a) \in R.$ A relation is not symmetric if there exists $(a,b) \in A$ such that $(a,b) \in R $ but $(b,a) \cancel{\in} R.$
+\subsubsection*{Example}
+Consider the following relations on $\{1,2,3,4\}$.
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex7.PNG}
+\end{center}
+
+\subsection*{Definition 3.13}
+A relation R is antisymmetric if whenever $(a,b)$ or $(b,a)$ belong to R then $a = b.$ Otherwise, it is not antisymmetric.
+\subsubsection*{Example}
+Consider the following relations on $\{1,2,3,4\}$.
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex7.PNG}
+\end{center}
+
+\subsection*{Definition 3.14}
+A relation R on a set A is transitive if whenever $(a,b),(b,c) \in R$ then $(a,c) \in R.$ A relation is not transitive if there exists $a,b,c \in A$ such that $(a,b),(b,c) \in R$, but $ (a,c) \in R.$
+\subsubsection*{Example}
+Consider the following relations on $\{1,2,3,4\}$.
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex7.PNG}
+\end{center}
+
+\section{Closure Relations}
+The reflexive, symmetric and transitive closures of a relation R is to be denoted by respectively by: reflexive (R), symmetric (R), and transitive (R),
+\subsection*{Definition:} 
+Reflexive (R) can be obtained by adding to R those identity elements (a,a) which do not belong to R.
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex8.PNG}
+   \includegraphics[width=.48\textwidth]{ex9.PNG}
+\end{center}
+
+\subsection*{Definition:} 
+Symmetric (R) can be obtained by adding to R all pairs of (b,a) whenever (a,b) belong to R.
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex10.PNG}
+   \includegraphics[width=.48\textwidth]{ex11.PNG}
+\end{center}
+
+\subsection{Definition:}
+Let R be a relation on a set A with n elements. Recall that $R^2 = RoR$ and $R^n = R^{n-1}oR,$ Then, transitive (R) $- R \cup R^2 \cup ... \cup R^n.$
+\begin{center}
+  \includegraphics[width=.48\textwidth]{ex12.PNG}
+\end{center}
+
+\end{document}
